@@ -1,7 +1,11 @@
 package com.aymenjegham.framework.di.module
 
-import com.aymenjegham.core.usecase.getAllMovies.GetAllMoviesUseCase
-import com.aymenjegham.core.usecase.getAllMovies.GetAllMoviesUseCaseImpl
+import com.aymenjegham.core.usecase.getMovieDetails.GetMovieDetailsUseCase
+import com.aymenjegham.core.usecase.getMovieDetails.GetMovieDetailsUseCaseImpl
+import com.aymenjegham.core.usecase.getTopRatedMovies.GetTopRatedMoviesUseCase
+import com.aymenjegham.core.usecase.getTopRatedMovies.GetTopRatedMoviesUseCaseImpl
+import com.aymenjegham.core.usecase.getTrendingMovies.GetTrendingMoviesUseCase
+import com.aymenjegham.core.usecase.getTrendingMovies.GetTrendingMoviesUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -15,6 +19,14 @@ abstract class UseCaseModule {
 
     @Singleton
     @Binds
-    abstract fun bind(getAllMoviesUseCaseImpl: GetAllMoviesUseCaseImpl): GetAllMoviesUseCase
+    abstract fun bindGetTopRatedMovies(getTopRatedMoviesUseCaseImpl: GetTopRatedMoviesUseCaseImpl): GetTopRatedMoviesUseCase
+
+    @Singleton
+    @Binds
+    abstract fun bindGetTrendyMovies(getTrendingMoviesUseCaseImpl: GetTrendingMoviesUseCaseImpl): GetTrendingMoviesUseCase
+
+    @Singleton
+    @Binds
+    abstract fun bindGetMovieDetails(getMovieDetailsUseCaseImpl: GetMovieDetailsUseCaseImpl): GetMovieDetailsUseCase
 
 }

@@ -12,6 +12,9 @@ import java.io.Serializable
 @Entity(tableName = "Movie", indices = [Index(value = ["id"], unique = true)])
 data class MovieEntity(
 
+    // it is not recommended to make all members of a class nullable ,but i have no control
+    //over the response which it seems very unstable
+
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "id")
     @Expose
@@ -26,12 +29,7 @@ data class MovieEntity(
     @ColumnInfo(name = "backdrop_path")
     @Expose
     @SerializedName("backdrop_path")
-    val backdrop_path: String,
-
-    @ColumnInfo(name = "genre_ids")
-    @Expose
-    @SerializedName("genre_ids")
-    val genre_ids: List<Int>,
+    val backdrop_path: String?,
 
     @ColumnInfo(name = "original_language")
     @Expose
@@ -41,7 +39,7 @@ data class MovieEntity(
     @ColumnInfo(name = "original_title")
     @Expose
     @SerializedName("original_title")
-    val original_title: String,
+    val original_title: String?,
 
     @ColumnInfo(name = "overview")
     @Expose
@@ -56,22 +54,22 @@ data class MovieEntity(
     @ColumnInfo(name = "poster_path")
     @Expose
     @SerializedName("poster_path")
-    val poster_path: String,
+    val poster_path: String?,
 
     @ColumnInfo(name = "release_date")
     @Expose
     @SerializedName("release_date")
-    val release_date: String,
+    val release_date: String?,
 
     @ColumnInfo(name = "title")
     @Expose
     @SerializedName("title")
-    val title: String,
+    val title: String?,
 
     @ColumnInfo(name = "video")
     @Expose
     @SerializedName("video")
-    val video: Boolean,
+    val video: Boolean?,
 
     @ColumnInfo(name = "vote_average")
     @Expose
@@ -87,4 +85,10 @@ data class MovieEntity(
     @Expose
     @SerializedName("page")
     var page: Int?,
+
+    @ColumnInfo(name = "trending")
+    @Expose
+    @SerializedName("trending")
+    val trending: Boolean,
+
 ) : Serializable

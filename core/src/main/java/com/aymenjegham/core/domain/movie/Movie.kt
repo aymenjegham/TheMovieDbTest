@@ -15,19 +15,15 @@ data class Movie(
 
     @Expose
     @SerializedName("backdrop_path")
-    val backdrop_path: String,
-
-    @Expose
-    @SerializedName("genre_ids")
-    val genre_ids: List<Int>,
+    val backdropPath: String?,
 
     @Expose
     @SerializedName("original_language")
-    val original_language: String,
+    val originalLanguage: String,
 
     @Expose
     @SerializedName("original_title")
-    val original_title: String,
+    val originalTitle: String?,
 
     @Expose
     @SerializedName("overview")
@@ -39,15 +35,15 @@ data class Movie(
 
     @Expose
     @SerializedName("poster_path")
-    val poster_path: String,
+    val posterPath: String?,
 
     @Expose
     @SerializedName("release_date")
-    val release_date: String,
+    val releaseDate: String?,
 
     @Expose
     @SerializedName("title")
-    val title: String,
+    val title: String?,
 
     @Expose
     @SerializedName("video")
@@ -55,12 +51,19 @@ data class Movie(
 
     @Expose
     @SerializedName("vote_average")
-    val vote_average: Double,
+    val voteAverage: Double,
 
     @Expose
     @SerializedName("vote_count")
-    val vote_count: Int,
+    val voteCount: Int,
 
     var page: Int?,
 
-) : Serializable
+    val trending: Boolean,
+
+    ) : Serializable{
+
+    val posterPathFull : String
+    get() = "https://image.tmdb.org/t/p/w500/$posterPath"
+
+}
