@@ -54,3 +54,20 @@ As for dependencies, you are allowed (but not obligated) to use any of these:
 * Any serialization library 
 * Any image loading library
 * RxJava
+
+
+
+#####################################
+Solution with Jetpack compose -- Tech Stack. [branch :viewpager-compose]
+Kotlin
+Material 3 [dark and light themes]
+Jetpack compose
+Lifecycle
+ViewModel
+Paging 3 with RemoteMediator
+Kotlin coroutines ,Kotlin Flow
+Retrofit
+Gson 
+Dagger Hilt
+Coil
+
