@@ -18,7 +18,8 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        //testInstrumentationRunner = // TODO()
+        testInstrumentationRunner = "io.dvlt.themoviedbtest.HiltTestRunner"
+
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -49,6 +50,10 @@ android {
         kotlinCompilerExtensionVersion = "1.3.2"
     }
 
+    kapt {
+        correctErrorTypes = true
+    }
+
 
     packagingOptions {
         resources {
@@ -66,16 +71,12 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.6.1")
     implementation("androidx.compose.ui:ui:1.3.3")
     implementation("androidx.compose.ui:ui-tooling-preview:1.3.3")
-   // implementation("androidx.compose.material3:material3:1.1.0-alpha05")
+    implementation("androidx.compose.material3:material3:1.1.0-alpha04")
     implementation(project(mapOf("path" to ":framework")))
     implementation(project(mapOf("path" to ":core")))
+    implementation("androidx.compose.material:material:1.3.1")
+    implementation("com.google.android.gms:play-services-location:21.0.1")
 
-    implementation("androidx.appcompat:appcompat:1.6.0")
-    implementation("com.google.android.material:material:1.7.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-
-
-    //Testing libraries
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -83,24 +84,16 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling:1.3.3")
     debugImplementation("androidx.compose.ui:ui-test-manifest:1.3.3")
 
-    testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
-    testImplementation("org.mockito:mockito-core:4.10.0")
-    androidTestImplementation("org.mockito:mockito-android:4.0.0")
-
-    implementation("io.ktor:ktor-client-android:2.2.1")
-    implementation("io.ktor:ktor-client-auth:2.2.1")
-
-    //mockk
-    testImplementation("io.mockk:mockk:1.13.3")
-    androidTestImplementation("io.mockk:mockk:1.13.3")
-
-    testImplementation("androidx.arch.core:core-testing:2.1.0")
-    androidTestImplementation("androidx.arch.core:core-testing:2.1.0")
-
-    androidTestImplementation("androidx.navigation:navigation-testing:2.5.3")
-
     // lifeCycle compose
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
+
+    //Paging
+    val pagingVersion = "3.1.1"
+    implementation("androidx.paging:paging-runtime:$pagingVersion")
+    implementation ("androidx.paging:paging-compose:1.0.0-alpha17")
+
+    //Coil
+    implementation("io.coil-kt:coil-compose:2.2.2")
 
     //Hilt
     implementation("com.google.dagger:hilt-android:2.44.2")
@@ -114,4 +107,25 @@ dependencies {
 
     //Splash screen
     implementation("androidx.core:core-splashscreen:1.0.0")
+
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
+    testImplementation("org.mockito:mockito-core:4.10.0")
+    androidTestImplementation("org.mockito:mockito-android:4.0.0")
+
+    //For runBlockingTest, CoroutineDispatcher etc.
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
+    // For Robolectric tests.
+    testImplementation("com.google.dagger:hilt-android-testing:2.44.2")
+    // ...with Kotlin.
+    kaptTest("com.google.dagger:hilt-android-compiler:2.44.2")
+    // For instrumented tests.
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.44.2")
+    // ...with Kotlin.
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.44.2")
+
+    androidTestImplementation ("androidx.navigation:navigation-testing:2.5.3")
+
+
+
 }

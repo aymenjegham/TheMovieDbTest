@@ -22,7 +22,7 @@ android {
         debug {
             isJniDebuggable = true
             isMinifyEnabled = false
-            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/movie/top_rated/\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
             buildConfigField("String", "tmdbApiKeyV3", "\"76909ebd17e275d556f8e0ed68bbc2b5\"" )
             buildConfigField(
                 "String",
@@ -37,7 +37,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/movie/top_rated/\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
             buildConfigField("String", "tmdbApiKeyV3", "\"76909ebd17e275d556f8e0ed68bbc2b5\"" )
             buildConfigField(
                 "String",

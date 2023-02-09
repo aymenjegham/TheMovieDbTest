@@ -22,7 +22,7 @@ class MoviesRemoteMediator(
 ) : RemoteMediator<Int, MovieEntity>() {
 
     override suspend fun initialize(): InitializeAction {
-        val cacheTimeout = TimeUnit.MILLISECONDS.convert(1, TimeUnit.HOURS)
+        val cacheTimeout = TimeUnit.MILLISECONDS.convert(1, TimeUnit.SECONDS)
 
         return if (System.currentTimeMillis() - (database.remoteKeysDao().getCreationTime()
                 ?: 0) < cacheTimeout
@@ -57,7 +57,7 @@ class MoviesRemoteMediator(
         }
 
         try {
-            val apiResponse = api.getMovies(page = page)
+            val apiResponse = api.getTopRatedMovies(page = page )
 
             val movies = apiResponse.movies
             val endOfPaginationReached = movies.isEmpty()
@@ -65,7 +65,7 @@ class MoviesRemoteMediator(
             database.withTransaction {
                 if (loadType == LoadType.REFRESH) {
                     database.remoteKeysDao().clearRemoteKeys()
-                    database.movieDao().deleteAll()
+                    database.movieDao().deleteAllTopRated()
                 }
                 val prevKey = if (page > 1) page - 1 else null
                 val nextKey = if (endOfPaginationReached) null else page + 1

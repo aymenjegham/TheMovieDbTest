@@ -3,6 +3,7 @@ package com.aymenjegham.framework.di.module
 
 import com.aymenjegham.framework.database.Database
 import com.aymenjegham.framework.database.MovieDao
+import com.aymenjegham.framework.database.MovieDetailsDao
 import com.aymenjegham.framework.database.RemoteKeysDao
 import dagger.Module
 import dagger.Provides
@@ -18,7 +19,11 @@ class DaoModule {
 
     @Provides
     @Singleton
-    fun provideProductDao(database: Database): MovieDao = database.movieDao()
+    fun provideMovieDao(database: Database): MovieDao = database.movieDao()
+
+    @Provides
+    @Singleton
+    fun provideMovieDetailsDao(database: Database): MovieDetailsDao = database.movieDetailsDao()
 
     @Provides
     @Singleton

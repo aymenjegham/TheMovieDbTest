@@ -2,8 +2,7 @@ package com.aymenjegham.framework.database
 
 
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
-import com.aymenjegham.framework.datasource.database.converter.GenreTypeConverter
+import com.aymenjegham.framework.entity.MovieDetailsEntity
 import com.aymenjegham.framework.entity.MovieEntity
 import com.aymenjegham.framework.entity.RemoteKeys
 import com.aymenjegham.framework.global.constants.DATABASE_FILE_NAME
@@ -16,6 +15,7 @@ const val DATABASE_VERSION = 1
 @RoomDatabse(
     entities = [
         MovieEntity::class,
+        MovieDetailsEntity::class,
         RemoteKeys::class
     ],
     version = DATABASE_VERSION,
@@ -23,12 +23,12 @@ const val DATABASE_VERSION = 1
 )
 
 
-@TypeConverters(
-    GenreTypeConverter::class,
-)
+
 abstract class Database : RoomDatabase() {
 
     abstract fun movieDao(): MovieDao
+
+    abstract fun movieDetailsDao(): MovieDetailsDao
 
     abstract fun remoteKeysDao(): RemoteKeysDao
 }

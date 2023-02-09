@@ -10,7 +10,7 @@ data class Result(
     val page: Int,
 
     @Expose
-    @SerializedName("movies")
+    @SerializedName("results")
     val movies: List<Movie>,
 
     @Expose
